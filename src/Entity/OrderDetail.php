@@ -16,11 +16,11 @@ class OrderDetail
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\Id]
-    #[ORM\ManyToOne(inversedBy: 'orderDetails')]
-    private ?Order $orders = null;
-
-    #[ORM\Id]
+    #[ORM\Id]       //clé primaire composite      //
+    #[ORM\ManyToOne(inversedBy: 'orderDetails')] //
+    private ?Order $orders = null;             //
+                                              //
+    #[ORM\Id]       //clé primaire composite //
     #[ORM\ManyToOne(inversedBy: 'orderDetails')]
     private ?Product $product = null;
 
