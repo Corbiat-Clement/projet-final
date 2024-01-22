@@ -41,6 +41,9 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: OrderDetail::class)]
     private Collection $orderDetails;
 
+    #[ORM\Column(length: 5)]
+    private ?string $nutriscore = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -180,6 +183,18 @@ class Product
                 $orderDetail->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNutriscore(): ?string
+    {
+        return $this->nutriscore;
+    }
+
+    public function setNutriscore(string $nutriscore): static
+    {
+        $this->nutriscore = $nutriscore;
 
         return $this;
     }
