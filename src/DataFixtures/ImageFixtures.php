@@ -2,17 +2,21 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Product;
 use App\Entity\Image;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-;
+
+
+
 
 class ImageFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        $this->createImage('saucisson', 'product_Saucisson-Sec-Traditionnel', '../../public/images/saucissons/saucisson.jpg', $manager);
+
+        $this->createImage('saucisson', 'product_saucisson-sec-traditionnel', '../../public/images/saucissons/saucisson.jpg', $manager);
 
         $manager->flush();
     }
