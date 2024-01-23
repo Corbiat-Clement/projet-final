@@ -16,19 +16,19 @@ class ImageFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
 
-        $this->createImage('saucisson', 'product_saucisson-sec-traditionnel', '../../public/images/saucissons/saucisson.jpg', $manager);
+        // $this->createImage('saucisson', 'product_saucisson-sec-traditionnel', '../../public/images/saucissons/saucisson.jpg', $manager);
 
         $manager->flush();
     }
 
-    public function createImage(string $name, string $productReference, string $path, ObjectManager $manager)
+    public function createImage(string $name, string $productReference, ObjectManager $manager)
     {
         $product = $this->getReference($productReference);
 
         $image = new Image();
         $image->setName($name);
         $image->setProduct($product);
-        $image->setPath($path);
+        // $image->setPath($path);
 
         $manager->persist($image);
 

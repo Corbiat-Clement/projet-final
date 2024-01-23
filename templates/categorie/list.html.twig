@@ -16,18 +16,22 @@
 		</section>
 
 		<section class="row">
-			{% for product in products %}
+			{% for product in products.data %}
 				<div class="col-3 my-4 text-center">
 					<div class="card" style="width: 18rem;">
 						<div class="card-body">
 							<h5 class="card-title">{{product.name}}</h5>
 							<p class="card-text">{{product.description}}</p>
-							<a href="#" class="btn btn-primary">Voir les détails</a>
+							<a href="{{path('product_details', {slug: product.slug})}}" class="btn btn-primary">Voir les détails</a>
 						</div>
 					</div>
 				</div>
 			{% endfor %}
-
+            {% set path = 'categorie_list' %}
+            {% set slug = category.slug %}
+            {% set pages = products.pages %}
+            {% set currentPage = products.page %}
+            {% include "_parts/_pagination.html.twig" %}
 		</section>
 	</main>
 
