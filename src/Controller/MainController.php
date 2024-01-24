@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     #[Route('/', name: 'app_main')]
-    public function index(CategorieRepository $categorieRepository, ProductRepository $productRepository): Response
+    public function index(CategorieRepository $categorieRepository): Response
     {
         return $this->render('main/index.html.twig', [
             'categories' => $categorieRepository->findAll()

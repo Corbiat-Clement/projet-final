@@ -19,20 +19,43 @@
 						</a>
 
 						<ul class="dropdown-menu">
+							{# {% for category in categories %}
+								{% if category.parent == null %}
+									<h5 class="p-2">{{category.name}}</h5>
+								{% else %}
+									<a href="{{path('categorie_list', {slug: category.slug})}}" class="dropdown-item">{{category.name}}</a>
+								{% endif %}
+							{% endfor %} #}
+							<h5 class="p-2">Epicerie Salée</h5>
 							<li>
-								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Apéritifs</a>
 							</li>
 							<li>
-								<a class="dropdown-item" href="#">Another action</a>
+								<a class="dropdown-item" href="#">Legumes</a>
 							</li>
+							<li>
+								<a class="dropdown-item" href="#">Riz,Pâtes,Céréales</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Saucissons</a>
+							</li>
+
 							<li><hr class="dropdown-divider"></li>
+
+							<h5 class="p-2">Epicerie Sucrée</h5>
 							<li>
-								<a class="dropdown-item" href="#">Something else here</a>
+								<a class="dropdown-item" href="#">Fruits</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Bonbons</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Gâteaux</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Confitures</a>
 							</li>
 						</ul>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" aria-disabled="true">Disabled</a>
 					</li>
 				</ul>
 			</div>
@@ -46,7 +69,10 @@
 			</div>
 
 
-			<div class="col-4 text-center">
+			<div class="col-4 d-flex justify-content-evenly">
+				<a href="{{path('cart_index')}}" class="nav-link">
+					<svg class="svg-icon" style="width: 2.5em; height: 2.5em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M810.666667 298.666667h-128V256a170.666667 170.666667 0 0 0-341.333334 0v42.666667H213.333333a42.666667 42.666667 0 0 0-42.666666 42.666666v469.333334a128 128 0 0 0 128 128h426.666666a128 128 0 0 0 128-128V341.333333a42.666667 42.666667 0 0 0-42.666666-42.666666z m-384-42.666667a85.333333 85.333333 0 0 1 170.666666 0v42.666667h-170.666666z m341.333333 554.666667a42.666667 42.666667 0 0 1-42.666667 42.666666H298.666667a42.666667 42.666667 0 0 1-42.666667-42.666666V384h85.333333v42.666667a42.666667 42.666667 0 0 0 85.333334 0V384h170.666666v42.666667a42.666667 42.666667 0 0 0 85.333334 0V384h85.333333z"  /></svg>
+				</a>
 				<li class="nav-item dropdown pe-5">
 					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="20.000000pt" height="20.000000pt" viewbox="0 0 1280.000000 1248.000000" preserveaspectratio="xMidYMid meet">

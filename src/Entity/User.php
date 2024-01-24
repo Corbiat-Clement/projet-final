@@ -49,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 150)]
     private ?string $city = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Orders::class)]
     private Collection $orders;
 
     public function __construct()
@@ -190,14 +190,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     
 
     /**
-     * @return Collection<int, Order>
+     * @return Collection<int, Orders>
      */
     public function getOrders(): Collection
     {
         return $this->orders;
     }
 
-    public function addOrder(Order $order): static
+    public function addOrder(Orders $order): static
     {
         if (!$this->orders->contains($order)) {
             $this->orders->add($order);
@@ -207,7 +207,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeOrder(Order $order): static
+    public function removeOrder(Orders $order): static
     {
         if ($this->orders->removeElement($order)) {
             // set the owning side to null (unless already changed)

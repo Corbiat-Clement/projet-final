@@ -18,7 +18,7 @@ class OrderDetail
 
     #[ORM\Id]              //clé primaire composite   //
     #[ORM\ManyToOne(inversedBy: 'orderDetails')]     //
-    private ?Order $orders = null;                 //
+    private ?Orders $orders = null;                 //
                                                   //
     #[ORM\Id]           //clé primaire composite //
     #[ORM\ManyToOne(inversedBy: 'orderDetails')]
@@ -50,12 +50,12 @@ class OrderDetail
         return $this;
     }
 
-    public function getOrders(): ?Order
+    public function getOrders(): ?Orders
     {
         return $this->orders;
     }
 
-    public function setOrders(?Order $orders): static
+    public function setOrders(?Orders $orders): static
     {
         $this->orders = $orders;
 
