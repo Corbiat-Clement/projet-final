@@ -3,13 +3,17 @@
 namespace App\Form;
 
 use App\Entity\Categorie;
+use App\Entity\Image;
 use App\Entity\Product;
 use App\Repository\CategorieRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image as ConstraintsImage;
+use Symfony\Component\Validator\Constraints\Positive;
 
 class ProductFormType extends AbstractType
 {
@@ -20,8 +24,14 @@ class ProductFormType extends AbstractType
                 'label' => 'Nom'
             ])
             ->add('description')
-            ->add('price', options:[
-                'label' => 'Prix'
+            ->add('price', MoneyType::class, options:[
+                'label' => 'Prix',
+                'divisor' => 100,// Remplace les opérations pour convertir le prix dans AdminProductController grâce a MoneyType::class
+                'constraints' =>[
+                    new Positive(
+                        message: 'le prix ne peut être négatif'
+                    )
+                ]
             ])
             ->add('stock', options:[
                 'label' => 'Unités en stock'
@@ -42,7 +52,7 @@ class ProductFormType extends AbstractType
                 'label' => false,
                 'multiple' => true,
                 'mapped' => false,
-                'required' => false
+                'required' => false,
             ])
         ;
     }

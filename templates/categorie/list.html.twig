@@ -17,8 +17,10 @@
 
 		<section class="row">
 			{% for product in products.data %}
+
 				<div class="col-3 my-4 text-center">
 					<div class="card" style="width: 18rem;">
+						<img src="{{asset('images/products/mini/300x300-' ~ product.images[0].name)}}" class="card-img-top" alt="{{product.name}}">
 						<div class="card-body">
 							<h5 class="card-title">{{product.name}}</h5>
 							<p class="card-text">{{product.description}}</p>
