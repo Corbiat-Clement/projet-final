@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des Categories{% endblock %}
+
+{% block body %}
+    <section class="container">
+        <div class="row">
+            {% include "_parts/_adminnav.html.twig" %}
+            <main class="col-9 border border-light bg-white p-2">
+                <h1>Liste des categories</h1>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nom</th>
+                            <th>Parent</th>
+                            <th>Slug</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categorie %}
+                            <tr>
+                                <td>{{category.id}}</td>
+                                <td>{{category.name}}</td>
+                                <td>
+                                    {% if category.parent is not null %}
+                                        {{category.parent.name}}
+                                    {% endif %}
+                                </td>
+                                <td>{{category.slug}}</td>
+                                <td><a href="" class="btn btn-warning">Modifier</a></td>
+                                <td><a href="" class="btn btn-danger">Supprimer</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </section>
+{% endblock %}
