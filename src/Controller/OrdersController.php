@@ -6,17 +6,19 @@ namespace App\Controller;
 use App\Entity\OrderDetail;
 use App\Entity\Orders;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\MailerService;
 
 #[Route('/commandes', name: 'orders_')]
 class OrdersController extends AbstractController
 {
     #[Route('/ajout', name: 'add')]
-    public function add(SessionInterface $session, ProductRepository $productsRepository, EntityManagerInterface $entityManager): Response
+    public function add(SessionInterface $session, ProductRepository $productsRepository, EntityManagerInterface $entityManager, MailerService $mailerService): Response
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
 
@@ -60,6 +62,11 @@ class OrdersController extends AbstractController
 
         $entityManager->persist($product);
         $entityManager->flush();
+
+        $user = $order->getUser();
+        $mailerService->sendEmail(to: $user->getEmail(), content: $order->getOrdersDetails());
+
+
 
         $session->remove('panier');
 
