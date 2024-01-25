@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#">Projet-Final</a>
@@ -19,6 +20,7 @@
 						</a>
 
 						<ul class="dropdown-menu">
+							{% include '_parts/_navcategorie.html.twig' with {'categories': categories} %}
 							{# {% for category in categories %}
 								{% if category.parent == null %}
 									<h5 class="p-2">{{category.name}}</h5>
@@ -26,7 +28,14 @@
 									<a href="{{path('categorie_list', {slug: category.slug})}}" class="dropdown-item">{{category.name}}</a>
 								{% endif %}
 							{% endfor %} #}
-							<h5 class="p-2">Epicerie Salée</h5>
+							{# {% for category in categories %}
+							{% if category.parent == null %}
+								{{render(controller('App\\Controller\\CategorieController::navlist', ))}}
+							{% else %}
+								<a href="{{path('categorie_list', {slug: category.slug})}}" class="dropdown-item">{{category.name}}</a>
+							{% endif %}
+						{% endfor %} #}
+							{# <h5 class="p-2">Epicerie Salée</h5>
 							<li>
 								<a class="dropdown-item" href="#">Apéritifs</a>
 							</li>
@@ -54,7 +63,7 @@
 							</li>
 							<li>
 								<a class="dropdown-item" href="#">Confitures</a>
-							</li>
+							</li> #}
 						</ul>
 					</li>
 				</ul>

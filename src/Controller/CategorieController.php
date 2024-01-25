@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Categorie;
+use App\Repository\CategorieRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +26,14 @@ class CategorieController extends AbstractController
         return $this->render('categorie/list.html.twig', [
             'category' => $category,
             'products' => $products
+        ]);
+    }
+
+    #[Route('/navlist', name: 'navlist')]
+    public function navlist(CategorieRepository $categorieRepository): Response
+    {
+        return $this->render('_parts/_nav.html.twig', [
+            'categories' => $categorieRepository->findAll()
         ]);
     }
 }

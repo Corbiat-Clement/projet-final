@@ -1,0 +1,7 @@
+{% for category in categories %}
+	{% if category.parent == null %}
+		<h5 class="p-2">{{category.name}}</h5>
+	{% else %}
+		<a href="{{path('categorie_list', {slug: category.slug})}}" class="dropdown-item">{{category.name}}</a>
+	{% endif %}
+{% endfor %}

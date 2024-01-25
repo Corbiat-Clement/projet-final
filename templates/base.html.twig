@@ -20,7 +20,7 @@
     
     <body>
         <header>
-            {% include "_parts/_nav.html.twig" %}
+            {{ render(controller('App\\Controller\\CategorieController::navlist')) }}
         </header>
         
         {% include "_parts/_flash.html.twig" %}
