@@ -55,6 +55,12 @@ class OrdersController extends AbstractController
         $entityManager->persist($order);
         $entityManager->flush();
 
+        $newStock = $product->getStock() - $quantity;
+        $product->setStock($newStock);
+
+        $entityManager->persist($product);
+        $entityManager->flush();
+
         $session->remove('panier');
 
         $this->addFlash('message', 'Commande créée avec succès');
