@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration des Catégories{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <section class="row">
+            <h1>Ajouter une catégorie</h1>
+            <div class="col">
+                {% include "admin/categorie/_form.html.twig" %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

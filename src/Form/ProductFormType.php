@@ -23,7 +23,9 @@ class ProductFormType extends AbstractType
             ->add('name', options:[
                 'label' => 'Nom'
             ])
-            ->add('description')
+            ->add('description', options:[
+                'label' => 'Description'
+            ])
             ->add('price', MoneyType::class, options:[
                 'label' => 'Prix',
                 'divisor' => 100,// Remplace les opérations pour convertir le prix dans AdminProductController grâce a MoneyType::class
@@ -36,7 +38,9 @@ class ProductFormType extends AbstractType
             ->add('stock', options:[
                 'label' => 'Unités en stock'
             ])
-            ->add('nutriscore')
+            ->add('nutriscore', options:[
+                'label' => 'Nutriscore'
+            ])
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
                 'choice_label' => 'name',
