@@ -28,14 +28,6 @@
                                 <td>{{user.lastname}}</td>
                                 <td>{{user.firstname}}</td>
                                 <td>
-                                    {# {% for role in user.roles %}
-                                        {% if role == "ROLE_ADMIN" %}
-                                            {% set name = "Administrateur" %}
-                                        {% else %}
-                                            {% set name = "Utilisateur" %}
-                                        {% endif %}
-                                        <span class="badge bg-secondary">{{name}}</span>
-                                    {% endfor %} #}
                                     {% if user.roles[0] == "ROLE_ADMIN" %}
                                         {% set name = "Administrateur" %}
                                         {% set color = "primary" %}

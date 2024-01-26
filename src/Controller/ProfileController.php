@@ -2,19 +2,36 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 
-#[Route('/profil', name: 'profile_')]
+
+#[Route('/profil', name: 'profil_')]
 class ProfileController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(): Response
+    public function index(Security $security): Response
     {
+        $user = $security->getUser();
+        // $userLastname = $user->getLastname();
+        // $userFirstname = $user->getFirstname();
+        // $userEmail = $user->getEmail();
+        // $userAddress = $user->getAddress();
+
+
+
         return $this->render('profile/index.html.twig', [
-            'controller_name' => 'ProfileController',
+            'userLastname' => $user->getLastname(),
+            'userFirstname' => $user->getFirstname(),
+            'userEmail' => $user->getEmail(),
+            'userAddress' => $user->getAddress(),
+            'userZipcode' => $user->getZipcode(),
+            'userCity' => $user->getCity(),
+            'userOrders' => $user->getOrders()
         ]);
     }
 
@@ -25,4 +42,5 @@ class ProfileController extends AbstractController
             'controller_name' => 'Commandes de l\'utilisateur',
         ]);
     }
+
 }
